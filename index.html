@@ -28,13 +28,32 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>
-
-  <h1>Angular To-Do</h1>
+  </nav>
 
   <div ng-controller="ItemCtrl">
-    {{dog}}
-    {{25+5}}
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
+        <button class="col-xs-6 btn btn-info" ng-click="allItems()">All Item</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <h1>NG ToDo</h1>
+        <div ng-show="!showListView">
+        <!-- when show list view is false, when it's not that value -->
+          <h3>New ToDo</h3>
+        </div>
+        <div ng-show="showListView">
+          <h3>ToDo List</h3>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
   </div>
 
 
