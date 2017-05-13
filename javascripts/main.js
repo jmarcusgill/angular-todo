@@ -1,5 +1,3 @@
-var app = angular.module("TodoApp", []);
-
 app.controller("NavCtrl", ($scope) => { //iify that controls navbar in html
 //$scope connects to dom
 
