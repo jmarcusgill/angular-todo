@@ -1,8 +1,7 @@
 @import "colors";
 
 body {
-  background-color: $orange;
-  color: $black;
+  background-color: $teal;
 }
 
 h1, h3 {
@@ -10,6 +9,11 @@ h1, h3 {
 }
 
 .navbar {
-  background-color: $red;
+  background-color: $navy;
+}
+
+.panel-body {
+  background-color: $black;
+  color: $white;
 }
 

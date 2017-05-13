@@ -1,9 +1,12 @@
 body {
-  background-color: #fbcb6a;
-  color: #000; }
+  background-color: #39CCCC; }
 
 h1, h3 {
   color: #DDDDDD; }
 
 .navbar {
-  background-color: #FF4136; }
+  background-color: #001f3f; }
+
+.panel-body {
+  background-color: #000;
+  color: #fff; }
