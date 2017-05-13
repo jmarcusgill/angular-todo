@@ -1,5 +1,15 @@
 @import "colors";
 
 body {
-  background-color: $blue
+  background-color: $orange;
+  color: $black;
 }
+
+h1, h3 {
+  color: $silver;
+}
+
+.navbar {
+  background-color: $red;
+}
+
