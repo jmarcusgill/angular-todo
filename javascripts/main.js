@@ -1,67 +1,50 @@
-// app.run((FIREBASE_CONFIG) => { //I want to be able to access this
-//   firebase.initializeApp(FIREBASE_CONFIG);
-// });
-
-// app.controller("NavCtrl", ($scope) => { //iify that controls navbar in html
-// //$scope connects to dom
-
-//   $scope.cat = "Meow";
-//   $scope.navItems = [{name: "Logout"}, {name: "All Items"}, {name: "New Item"}]; //must be same key
-// });
-
-// app.controller("ItemCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
-//   $scope.dog = "Woof!";
-
-//   $scope.showListView = true; //this is what is read on page load
-//   $scope.items = [];
-
-//   $scope.newItem = () => {
-//     $scope.showListView = false;
-//     console.log("new item");
-//   };
-
-//   $scope.allItems = () => {
-//     $scope.showListView = true;
-//     console.log("all items");
-//   };
-
-//   let getItemList = () => {
-//     let itemz = [];
-//     return $q ((resolve, reject) => {
-//       $http.get(`${FIREBASE_CONFIG.databaseURL}`/items.json)
-//       .then((fbItems) =>{
-//         resolve(fbItems);
-//       })
-//       .catch((error) => {
-//         reject(error);
-//       });
-//     });
-//   };
-
-//     let getItems = () => {
-//       getItemList().then((itemz) => {
-//         console.log("itemz", itemz);
-//       }).catch((error) => {
-//         console.log("get error", error);
-//       });
-//     };
-
-//     getItems();
-
-
-
-
-// });
-
-app.run((FIREBASE_CONFIG) => {
+app.run(function (FIREBASE_CONFIG) {
    firebase.initializeApp(FIREBASE_CONFIG);
 });
 
-app.controller("NavCtrl", ($scope)=> {
+app.config( function($routeProvider) {
+  $routeProvider
+    .when("/items/list", { //route you want to go to
+      templateUrl: "partials/item-list.html",
+      controller: "ItemListCtrl"
+    })
+    .when("/items/new", { //object with properties associaited with where you want to go
+      templateUrl: "partials/item-new.html",
+      controller: "ItemNewCtrl"
+    })
+    .when("/item/view/:id", { //:id is a placeholder, variable
+      templateUrl: "partials/item-view.html",
+      controller: "ItemViewCtrl"
+    })
+    .when("/item/edit/:id", {
+      templateUrl: "partials/item-new.html",
+      controller: "ItemEditCtrl"
+    })
+    .otherwise("/items/list"); //if i type in any other route than defined, take me here
+});
+
+
+app.controller("NavCtrl", function($scope) {
     $scope.cat = "Meow";
     $scope.navItems=[{name: "Logout"}, {name: "All Items"}, {name: "New Item"}];
 });
 
+
+app.controller("ItemListCtrl", function() {
+  console.log("inside ItemListCtrl");
+});
+
+app.controller("ItemNewCtrl", function() {
+  console.log("inside ItemNewCtrl");
+});
+
+app.controller("ItemViewCtrl", function() {
+  console.log("inside ItemViewCtrl");
+});
+
+app.controller("ItemEditCtrl", function() {
+  console.log("inside ItemEditCtrl");
+});
 
 //second controller -
 //must pass in the scope to the variable
