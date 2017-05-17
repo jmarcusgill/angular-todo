@@ -45,6 +45,21 @@ app.factory("ItemFactory", function($http, $q, FIREBASE_CONFIG) {
     });
   };
 
+  let editItem = (item) => {
+    return $q((resolve, reject) => {
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${item.id}.json`,
+        JSON.stringify({
+          assignedTo: item.assignedTo,
+          isCompleted: item.isCompleted,
+          task: item.task
+        })
+        ).then((resultz) => {
+        resolve(resultz);
+      }).catch((error) => {
+        console.log("error", error);
+      });
+    });
+  };
 
 
 
@@ -52,6 +67,7 @@ app.factory("ItemFactory", function($http, $q, FIREBASE_CONFIG) {
 
 
 
-  return {getItemList:getItemList, postNewItem:postNewItem, deletz:deletz}; //when called, finds this function and executes it
+
+  return {getItemList:getItemList, postNewItem:postNewItem, deletz:deletz, editItem:editItem}; //when called, finds this function and executes it
 
 });
