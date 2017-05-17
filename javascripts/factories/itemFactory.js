@@ -9,10 +9,12 @@ app.factory("ItemFactory", function($http, $q, FIREBASE_CONFIG) {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json`)
       .then((fbItems)=> {
         let itemCollection = fbItems.data;
-        Object.keys(itemCollection).forEach((key) => {
-            itemCollection[key].id=key;
-            itemz.push(itemCollection[key]);
-          });
+        if (itemCollection !== null) {
+          Object.keys(itemCollection).forEach((key) => {
+              itemCollection[key].id=key;
+              itemz.push(itemCollection[key]);
+            });
+        }
           resolve(itemz);
       })
       .catch((error) => {
