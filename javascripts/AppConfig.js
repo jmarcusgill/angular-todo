@@ -24,5 +24,9 @@ app.config( function($routeProvider) {
       templateUrl: "partials/item-new.html",
       controller: "ItemEditCtrl"
     })
+    .when("/logout", {
+      templateUrl: "partials/auth.html",
+      controller: "AuthCtrl"
+    })
     .otherwise("/auth"); //if i type in any other route than defined, take me here
 });
